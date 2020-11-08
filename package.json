@@ -1,0 +1,48 @@
+{
+  "name": "news-api",
+  "version": "1.0.0",
+  "description": "Diploma project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint ./",
+    "LF": "eslint ./ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Se-ki-zo/news-api.git"
+  },
+  "author": "Sekizo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Se-ki-zo/news-api/issues"
+  },
+  "homepage": "https://github.com/Se-ki-zo/news-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "celebrate": "^13.0.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.5",
+    "joi": "^17.3.0",
+    "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.11",
+    "url-validation": "^2.1.0",
+    "validator": "^13.1.17",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.1.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.0"
+  }
+}
