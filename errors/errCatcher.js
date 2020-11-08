@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 module.exports.errCatcher = (err, req, res, next) => {
   console.log(err.name); // test
   // console.log(err); // test

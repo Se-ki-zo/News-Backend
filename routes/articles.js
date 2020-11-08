@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 // npm install joi
 // npm install celebrate
 
