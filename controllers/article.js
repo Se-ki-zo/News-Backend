@@ -22,15 +22,9 @@ module.exports.createArticle = (req, res, next) => {
     owner: req.user._id,
   })
     .then((article) => {
-      res.send({
-        keyword: article.keyword,
-        title: article.title,
-        text: article.text,
-        date: article.date,
-        source: article.source,
-        link: article.link,
-        image: article.image,
-      });
+      const card = article;
+      card.owner = undefined; // don't return owner
+      res.send({ data: card });
     })
     .catch(next);
 };
@@ -40,8 +34,12 @@ module.exports.returnSavedArticles = (req, res, next) => {
     owner: req.user._id,
   })
     .then((article) => {
+      const cards = article;
+      for (let i = 0; i < article.length; i += 1) { // don't return owner
+        cards[i].owner = undefined;
+      }
       res.send({
-        data: article,
+        data: cards,
       });
     })
     .catch(next);
@@ -55,9 +53,13 @@ module.exports.deleteArticleById = (req, res, next) => {
       // console.log(article.owner);
       if (req.user._id === String(article.owner)) {
         Article.findByIdAndRemove(req.params.id)
-          .then(() => res.send({
-            data: article,
-          }));
+          .then(() => {
+            const card = article;
+            card.owner = undefined; // don't return owner
+            res.send({
+              data: card,
+            });
+          });
       } else {
         throw new Error('NotAllowed').message;
       }

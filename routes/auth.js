@@ -11,9 +11,11 @@ const Auth = require('../controllers/auth.js');
 router.post('/signup',
   celebrate({
     body: Joi.object().keys({
-      name: Joi.string().required().min(2).max(30),
-      email: Joi.string().required().email(),
-      password: Joi.string().required().min(8).pattern(/^\S*$/),
+      name: Joi.string().required().min(2).max(30)
+        .trim(),
+      email: Joi.string().required().email().trim(),
+      password: Joi.string().required().min(8).trim()
+        .pattern(/^\S*$/),
     }),
   }),
   Auth.createUser);
@@ -21,9 +23,9 @@ router.post('/signup',
 router.post('/signin',
   celebrate({
     body: Joi.object().keys({
-      name: Joi.string().min(2).max(30),
-      email: Joi.string().required().email(),
-      password: Joi.string().required().min(8),
+      name: Joi.string().min(2).max(30).trim(),
+      email: Joi.string().required().email().trim(),
+      password: Joi.string().required().min(8).trim(),
     }),
   }),
   Auth.login);

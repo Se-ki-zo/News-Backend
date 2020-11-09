@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const {
-  JWT_SECRET = 'dev-secret',
-} = process.env;
+const { JWT_SECRET } = require('../envConfig');
 
 module.exports = (req, res, next) => {
   if (!req.headers.cookie) {

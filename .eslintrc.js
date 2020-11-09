@@ -6,9 +6,8 @@ module.exports = {
   },
   extends: 'airbnb-base',
   rules: {
-    'no-unused-vars': ['error', {
-      allow: ['next'],
-    }],
+    'no-unused-vars': 1,
+    'no-console': 'off',
     'no-underscore-dangle': ['error', {
       allow: ['_id'],
     }],

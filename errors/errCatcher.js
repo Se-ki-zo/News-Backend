@@ -1,6 +1,6 @@
 module.exports.errCatcher = (err, req, res, next) => {
   console.log(err.name); // test
-  // console.log(err); // test
+  // console.log(err.message); // test
 
   if (err.message === 'NotFound' || err.name === 'DocumentNotFoundError') { // 404
     return res.status(404).send({
@@ -25,6 +25,11 @@ module.exports.errCatcher = (err, req, res, next) => {
   if (err.message === 'Unauthorized') { // 401
     return res.status(401).send({
       message: 'Необходима авторизация',
+    });
+  }
+  if (err.message === 'MethodNotAllowed') { // 405
+    return res.status(405).send({
+      message: 'Метод не поддерживается',
     });
   }
   if (err.code === 11000) { // 409
