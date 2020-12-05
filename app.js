@@ -5,6 +5,7 @@
 
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -33,6 +34,7 @@ mongoose.connect(MONGO, {
   useFindAndModify: false,
 });
 
+app.use(cors());
 app.use(limiter);
 
 const articles = require('./routes/articles.js');
