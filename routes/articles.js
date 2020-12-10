@@ -15,7 +15,7 @@ router.get('/',
   celebrate({
     [Segments.COOKIES]: Joi.object({
       jwt: Joi.string().required(),
-    }),
+    }).unknown(true),
   }),
   Article.returnSavedArticles);
 
@@ -23,8 +23,7 @@ router.post('/',
   celebrate({
     body: Joi.object().keys({
       keyword: Joi.string().required().min(2).trim(),
-      title: Joi.string().required().trim().min(2)
-        .max(30),
+      title: Joi.string().required().trim().min(2),
       text: Joi.string().required().trim(),
       date: Joi.string().required().trim(),
       source: Joi.string().required().trim(),
@@ -33,7 +32,7 @@ router.post('/',
     }),
     [Segments.COOKIES]: Joi.object({
       jwt: Joi.string().required(),
-    }),
+    }).unknown(true),
   }),
   Article.createArticle);
 
@@ -44,7 +43,7 @@ router.delete('/:id',
     }),
     [Segments.COOKIES]: Joi.object({
       jwt: Joi.string().required(),
-    }),
+    }).unknown(true),
   }),
   Article.deleteArticleById);
 
