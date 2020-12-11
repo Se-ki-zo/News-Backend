@@ -34,14 +34,19 @@ mongoose.connect(MONGO, {
   useFindAndModify: false,
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+//   next();
+// });
+
+// app.use(cors());
+// app.options('*', cors());
+// app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 
 const corsOptions = {
   origin: [
     'http://localhost:8080',
+    'http://localhost:8080/saved-news.html',
     'http://localhost:8081',
     'http://localhost:3000',
     'https://sekizos-storage.students.nomoreparties.space/',
@@ -64,7 +69,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 // app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Origin', '/*');
 //   next();
 // });
 app.use(limiter);

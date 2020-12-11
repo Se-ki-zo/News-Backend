@@ -3,10 +3,11 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../envConfig');
 
 module.exports = (req, res, next) => {
-  if (!req.headers.cookie) {
+  if (!req.cookies) {
     throw new Error('Unauthorized');
   }
-  const token = req.headers.cookie.replace('jwt=', '');
+  // console.log(req.cookies);
+  const token = req.cookies.jwt;
   let payload;
 
   try {
@@ -15,5 +16,6 @@ module.exports = (req, res, next) => {
     throw new Error('Unauthorized');
   }
   req.user = payload;
+  // console.log(payload);
   next();
 };

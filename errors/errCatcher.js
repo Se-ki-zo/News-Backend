@@ -1,6 +1,8 @@
 module.exports.errCatcher = (err, req, res, next) => {
   console.log(err.name); // test
   // console.log(err.message); // test
+  // console.log(req.cookies);
+  // console.log(req.headers.cookie);
 
   if (err.message === 'NotFound' || err.name === 'DocumentNotFoundError') { // 404
     return res.status(404).send({

@@ -16,7 +16,7 @@ router.get('/me',
     }),
     [Segments.COOKIES]: Joi.object({
       jwt: Joi.string().required(),
-    }),
+    }).unknown(true),
   }),
   User.returnUserInfo);
 
