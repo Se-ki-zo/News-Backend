@@ -21,34 +21,43 @@ const {
 } = require('./middlewares/logger.js');
 const auth = require('./middlewares/auth.js');
 
-const corsOptions = {
-  origin: [
-    '95.72.5.175',
-    'http://localhost:8080',
-    'http://localhost:8080/saved-news.html',
-    'https://se-ki-zo.github.io/',
-    'https://se-ki-zo.github.io',
-    'https://se-ki-zo.github.io/News-Frontend/',
-    'https://se-ki-zo.github.io/News-Frontend/index.html',
-    'https://se-ki-zo.github.io/News-Frontend/saved-news.html',
-    'http://localhost:8081',
-    'http://localhost:3000',
-    'http://sekizos-storage.students.nomoreparties.space/',
-    'http://www.sekizos-storage.students.nomoreparties.space/',
-    'https://sekizos-storage.students.nomoreparties.space/',
-    'https://www.sekizos-storage.students.nomoreparties.space/',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'x-access-token',
-  ],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: [
+//     '95.72.5.175',
+//     'http://localhost:8080',
+//     'http://localhost:8080/saved-news.html',
+//     'https://se-ki-zo.github.io/',
+//     'https://se-ki-zo.github.io',
+//     'https://se-ki-zo.github.io/News-Frontend/',
+//     'https://se-ki-zo.github.io/News-Frontend/index.html',
+//     'https://se-ki-zo.github.io/News-Frontend/saved-news.html',
+//     'http://localhost:8081',
+//     'http://localhost:3000',
+//     'http://sekizos-storage.students.nomoreparties.space/',
+//     'http://www.sekizos-storage.students.nomoreparties.space/',
+//     'https://sekizos-storage.students.nomoreparties.space/',
+//     'https://www.sekizos-storage.students.nomoreparties.space/',
+//   ],
+//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+//   allowedHeaders: [
+//     'Content-Type',
+//     'origin',
+//     'x-access-token',
+//   ],
+//   credentials: true,
+// };
 
 const app = express();
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+    res.end();
+  }
+  next();
+});
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
