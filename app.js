@@ -36,19 +36,11 @@ const corsOptions = {
     'https://sekizos-storage.students.nomoreparties.space/',
     'https://www.sekizos-storage.students.nomoreparties.space/',
   ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: [
-    'Content-Type',
-    'origin',
-    'x-access-token',
-  ],
   credentials: true,
 };
 
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
