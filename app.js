@@ -44,20 +44,7 @@ mongoose.connect(MONGO, {
 // app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 
 const corsOptions = {
-  origin: [
-    'http://localhost:8080',
-    'http://localhost:8080/saved-news.html',
-    'https://se-ki-zo.github.io/',
-    'https://se-ki-zo.github.io/News-Frontend/',
-    'https://se-ki-zo.github.io/News-Frontend/index.html',
-    'https://se-ki-zo.github.io/News-Frontend/saved-news.html',
-    'http://localhost:8081',
-    'http://localhost:3000',
-    'http://sekizos-storage.students.nomoreparties.space/',
-    'http://www.sekizos-storage.students.nomoreparties.space/',
-    'https://sekizos-storage.students.nomoreparties.space/',
-    'https://www.sekizos-storage.students.nomoreparties.space/',
-  ],
+  origin: '*',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
