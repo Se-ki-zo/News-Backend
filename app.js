@@ -23,6 +23,7 @@ const auth = require('./middlewares/auth.js');
 
 const corsOptions = {
   origin: [
+    '95.72.5.175',
     'http://localhost:8080',
     'http://localhost:8080/saved-news.html',
     'https://se-ki-zo.github.io/',
