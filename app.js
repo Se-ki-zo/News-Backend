@@ -37,12 +37,12 @@ const corsOptions = {
     'https://www.sekizos-storage.students.nomoreparties.space/',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  allowedHeaders: 'Content-Type, Cookie',
+  allowedHeaders: 'Content-Type',
   credentials: true,
 };
 
 const app = express();
-app.use(cors(corsOptions));
+app.use('*', cors(corsOptions));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
