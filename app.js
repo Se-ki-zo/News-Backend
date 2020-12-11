@@ -53,19 +53,6 @@ mongoose.connect(MONGO, {
   useFindAndModify: false,
 });
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-//   next();
-// });
-
-// app.use(cors());
-// app.options('*', cors());
-// app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
-
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '/*');
-//   next();
-// });
 app.use(limiter);
 
 const articles = require('./routes/articles.js');
