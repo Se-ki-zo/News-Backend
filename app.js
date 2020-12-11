@@ -21,40 +21,34 @@ const {
 } = require('./middlewares/logger.js');
 const auth = require('./middlewares/auth.js');
 
-// const corsOptions = {
-//   origin: [
-//     '95.72.5.175',
-//     'http://localhost:8080',
-//     'http://localhost:8080/saved-news.html',
-//     'https://se-ki-zo.github.io/',
-//     'https://se-ki-zo.github.io/News-Frontend/',
-//     'https://se-ki-zo.github.io/News-Frontend/index.html',
-//     'https://se-ki-zo.github.io/News-Frontend/saved-news.html',
-//     'http://localhost:8081',
-//     'http://localhost:3000',
-//     'http://sekizos-storage.students.nomoreparties.space/',
-//     'http://www.sekizos-storage.students.nomoreparties.space/',
-//     'https://sekizos-storage.students.nomoreparties.space/',
-//     'https://www.sekizos-storage.students.nomoreparties.space/',
-//   ],
-//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   allowedHeaders: [
-//     'Content-Type',
-//     'origin',
-//     'x-access-token',
-//   ],
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: [
+    '95.72.5.175',
+    'http://localhost:8080',
+    'http://localhost:8080/saved-news.html',
+    'https://se-ki-zo.github.io/',
+    'https://se-ki-zo.github.io',
+    'https://se-ki-zo.github.io/News-Frontend/',
+    'https://se-ki-zo.github.io/News-Frontend/index.html',
+    'https://se-ki-zo.github.io/News-Frontend/saved-news.html',
+    'http://localhost:8081',
+    'http://localhost:3000',
+    'http://sekizos-storage.students.nomoreparties.space/',
+    'http://www.sekizos-storage.students.nomoreparties.space/',
+    'https://sekizos-storage.students.nomoreparties.space/',
+    'https://www.sekizos-storage.students.nomoreparties.space/',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  allowedHeaders: [
+    'Content-Type',
+    'origin',
+    'x-access-token',
+  ],
+  credentials: true,
+};
 
 const app = express();
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-
-  next();
-});
-// app.use('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
